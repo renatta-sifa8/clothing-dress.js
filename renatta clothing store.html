@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    body {
+      background: rgb(58, 46, 33);
+    }
+    img {
+      width: 250px;
+      height: 250px;
+    }
+    .box {
+      display: inline-block;
+      box-shadow: 0 0 2px 2px rgb(242, 240, 241);
+      border-radius: 15px;
+      margin-left: 46px;
+      margin-top: 10px;
+      background-color: #fff;
+      overflow: hidden;
+    }
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .btn-grad {
+      background-image: linear-gradient(
+        to right,
+        #1e130c 0%,
+        #9a8478 51%,
+        #1e130c 100%
+      );
+    }
+
+    .btn-grad {
+      margin: 10px;
+      padding: 15px 45px;
+      text-align: center;
+      text-transform: uppercase;
+      transition: 0.5s;
+      background-size: 200% auto;
+      color: white;
+      box-shadow: 0 0 20px #eee;
+      border-radius: 10px;
+      display: block;
+      outline: none;
+      border: none;
+    }
+
+    .btn-grad:hover {
+      background-position: right center;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .text {
+      text-align: center;
+    }
+  </style>
+  <body>
+    <div class="text">
+      <h1>daftar barang</h1>
+    </div>
+
+    <div id="saldo"></div>
+    <div id="container-barang"></div>
+  </body>
+  <script>
+    let saldo = 10000000;
+    document.getElementById("saldo").innerHTML =
+      "Saldo : Rp. " + saldo.toLocaleString("id-ID");
+    const products = [
+      {
+        img: "gaun1.jpg",
+        name: "white dress",
+        desc: "the victoria grandeur",
+        price: 1500000,
+      },
+      {
+        img: "gaun2.jpg",
+        name: "starlight",
+        desc: "starlight mermaid grown",
+        price: 700000,
+      },
+      {
+        img: "gaun3.jpg",
+        name: "orchid",
+        desc: "the pearl orchid",
+        price: 800000,
+      },
+      {
+        img: "gaun4.jpg",
+        name: "grace",
+        desc: "the majestic grace",
+        price: 950000,
+      },
+      {
+        img: "gaun5.jpg",
+        name: "ivory",
+        desc: "the ivory dream",
+        price: 500000,
+      },
+      {
+        img: "gaun6.jpg",
+        name: "glacier",
+        desc: "glacier dream",
+        price: 1000000,
+      },
+      {
+        img: "gaun7.jpg",
+        name: "pink blossom",
+        desc: "the pink blossom",
+        price: 700000,
+      },
+      {
+        img: "gaun8.jpg",
+        name: "architecture",
+        desc: "the diamond architecture",
+        price: 2000000,
+      },
+    ];
+
+    let produk = products.map((item, index) => {
+      return `
+      <div class ="box">
+        <img src="${item.img}">
+        <div class ="card-body">
+          <h2>${item.name}</h2>
+          <p>${item.desc}</p>
+          <p style="color : black;">Rp. ${item.price.toLocaleString("id-ID")}</p>
+          <button class="btn-grad beli" data-index="${index}">klik beli</button>
+        </div>
+        </div>`;
+    });
+
+    document.getElementById("container-barang").innerHTML = produk.join("");
+
+    const beli = document.querySelectorAll(".beli");
+    beli.forEach((tombol) => {
+      tombol.addEventListener("click", () => {
+        const index = tombol.getAttribute("data-index");
+        const item = products[index];
+        if (saldo < item.price) {
+          alert("Saldo anda kurang!");
+        } else {
+          const konfirmasi = confirm(`Apakah anda ingin membeli ${item.name}`);
+          if (konfirmasi) {
+            saldo -= item.price;
+            document.getElementById("saldo").innerHTML =
+              "Saldo : Rp. " + saldo.toLocaleString("id-ID");
+            alert("Berhasil membeli");
+          }
+        }
+      });
+    });
+  </script>
+</html>

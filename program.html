@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      p {
+        color: rgb(234, 158, 174);
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      let barang = [
+        { nama: "laptop", harga: 500000 },
+        { nama: "mouse", harga: 300000 },
+        { nama: "keyboard", harga: 20000 },
+        { nama: "monitot", harga: 500000 },
+        { nama: "printer", harga: 300000 },
+        { nama: "flashdisk", harga: 20000 },
+        { nama: "harddist", harga: 500000 },
+        { nama: "hetset", harga: 300000 },
+        { nama: "webcam", harga: 20000 },
+      ];
+      let barangs = barang.map((item) => {
+        return `<h1> ${item.nama} </h1>
+            <p> saya akan beli </p>
+            <h3> ${item.harga.toLocaleString("ID-id")} </h3>`;
+      });
+      document.write(barangs.join(""));
+    </script>
+  </body>
+</html>

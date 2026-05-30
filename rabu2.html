@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body id="body">
+    <p id="paragraf">
+      renata hari ini belajar java scrp dan di lanjut sejarah di lanjutin bk dan
+      pkn</p>
+    <button onclick="coba()">klik</button>
+    <button onclick="coba2()">klik</button>
+    <p onmouseenter="coba2()" onmouseleave="coba()">renata</p>
+    <script>
+      body = document.getElementById("body");
+      paragraf = document.getElementById("paragraf");
+      coba = () => {
+        body.style.backgroundColor = "pink";
+        paragraf.style.fontSize = "50px";
+        paragraf.style.backgroundColor = "white";
+      };
+      coba2 = () => {
+        body.style.backgroundColor = "lightblue";
+        paragraf.style.fontSize = "15px";
+      };
+    </script>
+</html>
